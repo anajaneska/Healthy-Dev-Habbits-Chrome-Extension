@@ -9,7 +9,7 @@
         "alarms",
         "notifications",
         "background",
-        "http://localhost:8080/"
+        "https://exercisedb.p.rapidapi.com/"
     ],
     "browser_action": {
         "default_popup": "index.html",

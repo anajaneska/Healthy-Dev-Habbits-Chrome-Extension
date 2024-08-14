@@ -11,7 +11,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         chrome.notifications.create('', {
             title: 'Hydration Reminder',
             message: 'Time to drink some water!',
-            iconUrl: '../assets/icon.png',
+            iconUrl: 'water.jpg',
             type: 'basic'
         });
     }
