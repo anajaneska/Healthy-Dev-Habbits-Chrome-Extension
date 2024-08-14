@@ -26,8 +26,8 @@ function resetWaterIfNewDay() {
     });
 }
 
-chrome.alarms.create('breakReminder', { delayInMinutes: 60, periodInMinutes: 60 });
-console.log('Break reminder alarm created with a 1-minute interval');
+chrome.alarms.create('breakReminder', { delayInMinutes: 1, periodInMinutes: 1 });
+
 chrome.alarms.onAlarm.addListener(function(alarm) {
     if (alarm.name === 'breakReminder') {
         sendBreakNotification();
