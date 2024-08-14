@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Healthy Dev Habits",
+    "version": "1.0",
+    "description": "Healthy Dev Habits chrome extension",
+    "permissions": [
+        "activeTab", 
+        "storage", 
+        "alarms",
+        "notifications",
+        "background",
+        "http://localhost:8080/"
+    ],
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_icon": {
+           
+        }
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    }
+}
