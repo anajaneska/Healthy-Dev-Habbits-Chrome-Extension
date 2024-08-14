@@ -9,7 +9,8 @@
         "alarms",
         "notifications",
         "background",
-        "https://exercisedb.p.rapidapi.com/"
+        "https://exercisedb.p.rapidapi.com/",
+        "https://spoonacular.com/food-api/"
     ],
     "browser_action": {
         "default_popup": "index.html",
