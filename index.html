@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydration Tracker</title>
+    <title>Healthy Dev Habits</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
     <div id="content">
-        <h1>Hydration Tracker</h1>
+        <h1>Healthy Dev Habits</h1>
+        <button id="logSleep">Log Sleep</button>
         <button id="logWater">Log Water Intake</button>
         <p id="waterStatus">Water Consumed: 0/8 cups</p>
         <div class="progress-bar">
             <div class="progress" id="waterProgress"></div>
         </div>
+        <p id="sleepStatus">Sleep Logged: 0</p>
+        <div class="progress-bar">
+            <div class="progress" id="sleepProgress"></div>
+        </div>
     </div>
     <script src="watertracker.js"></script>
+    <script src="sleeptracker.js"></script>
 </body>
 </html>
