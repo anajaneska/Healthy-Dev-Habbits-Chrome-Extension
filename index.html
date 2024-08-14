@@ -33,7 +33,26 @@
             <h2>Ergonomic Tips</h2>
             <button id="getErgonomicTip">Get Ergonomic Tip</button>
             <div id="ergonomicTips">
-                
+
+            </div>
+        </div>
+        <div class="mindfulness-stress-reduction">
+            <h2>Mindfulness & Stress Reduction</h2>
+            <button id="getMindfulnessTip">Get Mindfulness Tip</button>
+            <div id="mindfulnessTips">
+                <!-- Mindfulness and stress reduction tips will be displayed here -->
+            </div>
+            <div class="meditation-settings">
+                <h3>Daily Meditation Reminder</h3>
+                <label for="meditationInterval">Set Meditation Reminder (minutes):</label>
+                <input type="number" id="meditationInterval" min="1" value="1440"> <!-- Default 1440 minutes = 1 day -->
+                <button id="setMeditationReminder">Set Reminder</button>
+            </div>
+            <div class="breathing-settings">
+                <h3>Deep-Breathing Exercise Reminder</h3>
+                <label for="breathingInterval">Set Breathing Reminder (minutes):</label>
+                <input type="number" id="breathingInterval" min="1" value="60"> <!-- Default 60 minutes -->
+                <button id="setBreathingReminder">Set Reminder</button>
             </div>
         </div>
 
@@ -43,6 +62,7 @@
     <script src="sleeptracker.js"></script>
     <script src="exercise.js"></script>
     <script src="ergonomics.js"></script>
+    <script src="mindfulness.js"></script>
     <script src="breakreminder.js"></script>
 </body>
 </html>
