@@ -25,13 +25,15 @@
         <button id="logSleep">Log Sleep</button>
         <button id="logWater">Log Water Intake</button>
         <p id="waterStatus">Water Consumed: 0/8 cups</p>
-        <div class="progress-bar">
-            <div class="progress" id="waterProgress"></div>
-        </div>
+    <div id="waterProgress" style="width: 0%; height: 20px; background-color: blue;"></div>
+
+    
         <p id="sleepStatus">Sleep Logged: 0</p>
         <div class="progress-bar">
             <div class="progress" id="sleepProgress"></div>
         </div>
+        <p id="sleepTip">Start logging your sleep to get helpful tips!</p>  <!-- Tip placeholder -->
+
         
         <div class="mindfulness-stress-reduction">
             <h2>Mindfulness & Stress Reduction</h2>
@@ -69,7 +71,6 @@
     <script src="background.js"></script>
     <script src="watertracker.js"></script>
     <script src="sleeptracker.js"></script>
-    <script src="exercise.js"></script>
     <script src="ergonomics.js"></script>
     <script src="mindfulness.js"></script>
     <script src="breakreminder.js"></script>
