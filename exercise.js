@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     async function fetchExerciseData() {
-        const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0';
+        const url = 'https://exercisedb.p.rapidapi.com/exercises';
         const options = {
             method: 'GET',
             headers: {
@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const result = await response.json();
-            exerciseTips.innerHTML = result.map(exercise => `
+            // Shuffle the array and select 3 random exercises
+            const randomExercises = getRandomExercises(result, 3);
+            exerciseTips.innerHTML = randomExercises.map(exercise => `
                 <li>
                     <strong>${exercise.name}</strong>: ${exercise.target}
                 </li>
@@ -30,5 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             console.error('Error fetching exercise data:', error);
         }
+    }
+
+    function getRandomExercises(exercises, count) {
+        // Shuffle the exercises array
+        const shuffled = exercises.sort(() => 0.5 - Math.random());
+        // Return the first 'count' exercises
+        return shuffled.slice(0, count);
     }
 });
