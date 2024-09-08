@@ -13,18 +13,16 @@
 <body>
     <div id="content">
         <h1>Healthy Dev Habits</h1>
-        <a href="resources.html">Resources</a>
         <a href="settings.html">Settings</a>
+        <a href="resources.html">Resources</a>
+
         <div class="break-reminder">
-            <h1>Break Reminder</h1>
-    
-        <p id="breakStatus">Break Interval: 60 minutes</p>
-        <button id="setBreakReminder">Set Break Reminder</button>
-        
-            <!-- <button id="setBreakReminder">Set Break Reminder</button> -->
+            <h2>Break Reminder</h2>
+            <p id="breakStatus">Break Interval: 60 minutes</p>
+            <button id="setBreakReminder">Set Break Reminder</button>
         </div>
+
         <button id="logSleep">Log Sleep</button>
-        
         <button id="logWater">Log Water Intake</button>
         <p id="waterStatus">Water Consumed: 0/8 cups</p>
         <div class="progress-bar">
@@ -34,12 +32,9 @@
         <div class="progress-bar">
             <div class="progress" id="sleepProgress"></div>
         </div>
+        
         <div class="mindfulness-stress-reduction">
             <h2>Mindfulness & Stress Reduction</h2>
-            <button id="getMindfulnessTip">Get Mindfulness Tip</button>
-            <div id="mindfulnessTips">
-                <!-- Mindfulness and stress reduction tips will be displayed here -->
-            </div>
             <div class="meditation-settings">
                 <h3>Daily Meditation Reminder</h3>
                 <label for="meditationInterval">Set Meditation Reminder (minutes):</label>
@@ -53,8 +48,7 @@
                 <button id="setBreathingReminder">Set Reminder</button>
             </div>
         </div>
-        <button id="getFoodSuggestions">Get Healthy Food Suggestions</button>
-        <ul id="foodSuggestions"></ul>
+
         <div class="learning-section">
             <h2>Learning and Growth</h2>
             <p>Enter your interests (e.g., programming, design, data):</p>
@@ -62,6 +56,7 @@
             <button id="suggestResources">Get Learning Resources</button>
             <ul id="resourcesList"></ul>
         </div>
+        
         <div class="work-life-section">
             <h2>Work-Life Balance</h2>
             <p>Set your daily work limit (hours):</p>
@@ -71,14 +66,9 @@
         </div>
 
     </div>
-
     <script src="background.js"></script>
     <script src="watertracker.js"></script>
     <script src="sleeptracker.js"></script>
-    <script src="breakreminder.js"></script>
-    <!-- 
-    <script src="healthyfood.js"></script>
-    <script src="networking.js"></script> 
     <script src="exercise.js"></script>
     <script src="ergonomics.js"></script>
     <script src="mindfulness.js"></script>
