@@ -53,6 +53,23 @@
                 <button id="setBreathingReminder">Set Reminder</button>
             </div>
         </div>
+        <button id="getFoodSuggestions">Get Healthy Food Suggestions</button>
+        <ul id="foodSuggestions"></ul>
+        <div class="learning-section">
+            <h2>Learning and Growth</h2>
+            <p>Enter your interests (e.g., programming, design, data):</p>
+            <input type="text" id="interestsInput" placeholder="e.g., programming, design">
+            <button id="suggestResources">Get Learning Resources</button>
+            <ul id="resourcesList"></ul>
+        </div>
+        <div class="work-life-section">
+            <h2>Work-Life Balance</h2>
+            <p>Set your daily work limit (hours):</p>
+            <input type="number" id="workLimitInput" min="1" value="8">
+            <button id="setWorkLimit">Set Work Limit</button>
+            <p id="workStatus">Work Limit: 8 hours</p>
+        </div>
+
     </div>
 
     <script src="background.js"></script>
@@ -65,6 +82,9 @@
     <script src="exercise.js"></script>
     <script src="ergonomics.js"></script>
     <script src="mindfulness.js"></script>
-    -->
+    <script src="breakreminder.js"></script>
+    <script src="healthyfood.js"></script>
+    <script src="learning.js"></script>
+    <script src="worklife.js"></script>
 </body>
 </html>
