@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Healthy Dev Habits",
     "version": "1.0",
     "description": "Healthy Dev Habits chrome extension",
@@ -10,16 +10,14 @@
         "notifications",
         "background",
         "https://exercisedb.p.rapidapi.com/",
-        "https://spoonacular.com/food-api/"
+        "https://spoonacular.com/food-api/",
+        "https://www.eventbriteapi.com/"
     ],
-    "browser_action": {
-        "default_popup": "index.html",
-        "default_icon": {
-           
-        }
-    },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": true
-    }
+    "action": {
+        "default_popup": "index.html"
+      },
+      "background": {
+        "service_worker": "background.js"
+      },
+      "options_page": "settings.html"
 }

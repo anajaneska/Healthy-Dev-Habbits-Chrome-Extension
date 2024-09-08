@@ -1,45 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const breakReminderBtn = document.getElementById('setBreakReminder');
     const breakStatus = document.getElementById('breakStatus');
-    const breakOptions = document.getElementById('breakOptions');
+    const breakReminderBtn = document.getElementById('setBreakReminder');
+    
+    let breakInterval = 60;  // Default interval
 
-    let breakInterval = 60;  // Default 60 minutes (1 hour)
-    let breakIntervalId;
-
-    // Load stored data
+    // Load the stored break interval from local storage
     chrome.storage.local.get(['breakInterval'], function(result) {
         if (result.breakInterval) {
             breakInterval = result.breakInterval;
+            updateUI();
         }
-        updateUI();
     });
 
-    // Set or reset break reminder
+    // Set or reset break reminder on button click
     breakReminderBtn.addEventListener('click', function() {
-        clearInterval(breakIntervalId);
         setBreakReminder();
     });
 
-    function setBreakReminder() {
-        breakIntervalId = setInterval(function() {
-            sendBreakNotification();
-        }, breakInterval * 60 * 1000);  // Convert minutes to milliseconds
+    // Listen for changes to the breakInterval in storage and update UI
+    chrome.storage.onChanged.addListener(function(changes, namespace) {
+        if (changes.breakInterval) {
+            breakInterval = changes.breakInterval.newValue;
+            updateUI();
+            setBreakReminder();  // Reset the reminder with the new interval
+        }
+    });
 
+    function setBreakReminder() {
+        chrome.alarms.clear('breakReminder');  // Clear any existing alarm
+        chrome.alarms.create('breakReminder', { delayInMinutes: breakInterval, periodInMinutes: breakInterval });
+
+        // Update the interval in storage (in case it was changed in settings.html)
         chrome.storage.local.set({ 'breakInterval': breakInterval });
-        updateUI();
     }
 
     function updateUI() {
         breakStatus.textContent = `Break Interval: ${breakInterval} minutes`;
-        breakOptions.value = breakInterval;
     }
-
-    // Handle changes in the interval from UI
-    breakOptions.addEventListener('change', function() {
-        breakInterval = parseInt(breakOptions.value, 10);
-        setBreakReminder();
-    });
-
-    // Start the initial reminder
-    setBreakReminder();
 });

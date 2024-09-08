@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const waterStatus = document.getElementById('waterStatus');
     const waterProgress = document.getElementById('waterProgress');
 
-    const dailyGoal = 8;  // 8 cups per day
+    const dailyGoal = 8;
     let waterConsumed = 0;
 
     // Load stored data
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateUI() {
-        // Update the text and progress bar
         waterStatus.textContent = `Water Consumed: ${waterConsumed}/${dailyGoal} cups`;
         waterProgress.style.width = `${(waterConsumed / dailyGoal) * 100}%`;
     }

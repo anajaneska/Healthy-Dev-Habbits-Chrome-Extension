@@ -4,7 +4,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
-chrome.alarms.create('waterReminder', { delayInMinutes: 60, periodInMinutes: 60 });
+chrome.alarms.create('waterReminder', { delayInMinutes: 1, periodInMinutes: 1 });
+console.log('Alarm created');
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
     if (alarm.name === 'waterReminder') {
@@ -26,7 +27,7 @@ function resetWaterIfNewDay() {
     });
 }
 
-chrome.alarms.create('breakReminder', { delayInMinutes:60, periodInMinutes: 60 });
+chrome.alarms.create('breakReminder', { delayInMinutes: 100, periodInMinutes: 100 });
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
     if (alarm.name === 'breakReminder') {
@@ -46,7 +47,7 @@ function sendBreakNotification() {
         type: 'basic',
         title: 'Break Reminder',
         message: randomSuggestion,
-        iconUrl: 'crazy-labs-logo.png'
+        iconUrl: 'crazy-labs-logo.png'  // Ensure this image exists in your extension directory
     }, function(notificationId) {
         if (chrome.runtime.lastError) {
             console.error('Notification error:', chrome.runtime.lastError.message);
