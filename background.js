@@ -47,12 +47,46 @@ function sendBreakNotification() {
         type: 'basic',
         title: 'Break Reminder',
         message: randomSuggestion,
-        iconUrl: 'crazy-labs-logo.png'  // Ensure this image exists in your extension directory
+        iconUrl: 'crazy-labs-logo.png'
     }, function(notificationId) {
         if (chrome.runtime.lastError) {
             console.error('Notification error:', chrome.runtime.lastError.message);
         } else {
-            console.log('Notification created with ID:', notificationId);
+            console.log('Break notification created with ID:', notificationId);
         }
     });
+
+
+
+
+    chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+        if (message.type === 'setMeditationReminder') {
+            const interval = message.interval;
+            chrome.alarms.create('meditationReminder', { delayInMinutes: interval, periodInMinutes: interval });
+            console.log(`Meditation reminder set for every ${interval} minutes`);
+        }
+    
+        if (message.type === 'setBreathingReminder') {
+            const interval = message.interval;
+            chrome.alarms.create('breathingReminder', { delayInMinutes: interval, periodInMinutes: interval });
+            console.log(`Breathing reminder set for every ${interval} minutes`);
+        }
+    });
+    
+    chrome.alarms.onAlarm.addListener(function(alarm) {
+        if (alarm.name === 'meditationReminder') {
+            sendNotification('Meditation Reminder', 'Time for your daily meditation! Take a few minutes to relax and focus.');
+        } else if (alarm.name === 'breathingReminder') {
+            sendNotification('Deep-Breathing Reminder', 'Time for a deep-breathing exercise! Breathe in deeply, hold, and exhale.');
+        }
+    });
+    
+    function sendNotification(title, message) {
+        chrome.notifications.create({
+            type: 'basic',
+            title: title,
+            message: message,
+            iconUrl: 'water.jpg' 
+        });
+    }
 }

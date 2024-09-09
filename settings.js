@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const waterReminderIntervalInput = document.getElementById('waterReminderInterval');
     const saveWaterBtn = document.getElementById('saveWater');
 
+    const meditationIntervalInput = document.getElementById('meditationInterval');
+    const breathingIntervalInput = document.getElementById('breathingInterval');
+    const meditationBtn = document.getElementById('setMeditationReminder');
+    const breathingBtn = document.getElementById('setBreathingReminder');
+
+
+    // Helper function to show alerts for successful saves
+    function showAlert(message) {
+        alert(message);
+    }
+
+
     // Load the stored break interval
     chrome.storage.local.get(['breakInterval'], function(result) {
         if (result.breakInterval) {
@@ -16,12 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Save the new break interval
     saveSettingsBtn.addEventListener('click', function() {
         const newBreakInterval = parseInt(breakIntervalInput.value, 10);
-        chrome.storage.local.set({ 'breakInterval': newBreakInterval }, function() {
-            alert('Break interval saved!');
-        });
+        if (isNaN(newBreakInterval) || newBreakInterval <= 0) {
+            showAlert('Please enter a valid break interval.');
+        } else {
+            chrome.storage.local.set({ 'breakInterval': newBreakInterval }, function() {
+                showAlert('Break interval saved!');
+            });
+        }
     });
 
-    // Load stored settings
+    // Load stored water settings
     chrome.storage.local.get(['dailyGoal', 'waterReminderInterval'], function(result) {
         if (result.dailyGoal) {
             dailyGoalInput.value = result.dailyGoal;
@@ -36,11 +52,54 @@ document.addEventListener('DOMContentLoaded', function () {
         const newDailyGoal = parseInt(dailyGoalInput.value, 10);
         const newWaterReminderInterval = parseInt(waterReminderIntervalInput.value, 10);
 
-        chrome.storage.local.set({
-            'dailyGoal': newDailyGoal,
-            'waterReminderInterval': newWaterReminderInterval
-        }, function() {
-            alert('Water Settings saved!');
-        });
+        if (isNaN(newDailyGoal) || newDailyGoal <= 0) {
+            showAlert('Please enter a valid daily goal.');
+        } else if (isNaN(newWaterReminderInterval) || newWaterReminderInterval <= 0) {
+            showAlert('Please enter a valid water reminder interval.');
+        } else {
+            chrome.storage.local.set({
+                'dailyGoal': newDailyGoal,
+                'waterReminderInterval': newWaterReminderInterval
+            }, function() {
+                showAlert('Water Settings saved!');
+            });
+        }
+    });
+
+
+    // Load saved settings from chrome storage
+    chrome.storage.local.get(['meditationInterval', 'breathingInterval'], function(result) {
+        if (result.meditationInterval) {
+            meditationIntervalInput.value = result.meditationInterval;
+        }
+        if (result.breathingInterval) {
+            breathingIntervalInput.value = result.breathingInterval;
+        }
+    });
+
+    // Save meditation interval
+    meditationBtn.addEventListener('click', function () {
+        const interval = parseInt(meditationIntervalInput.value, 10);
+
+        if (isNaN(interval) || interval <= 0) {
+            showAlert('Please enter a valid meditation interval.');
+        } else {
+            chrome.storage.local.set({ 'meditationInterval': interval }, function() {
+                showAlert(`Meditation interval saved: ${interval} minutes`);
+            });
+        }
+    });
+
+    // Save breathing interval
+    breathingBtn.addEventListener('click', function () {
+        const interval = parseInt(breathingIntervalInput.value, 10);
+        
+        if (isNaN(interval) || interval <= 0) {
+            showAlert('Please enter a valid breathing interval.');
+        } else {
+            chrome.storage.local.set({ 'breathingInterval': interval }, function() {
+                showAlert(`Breathing interval saved: ${interval} minutes`);
+            });
+        }
     });
 });

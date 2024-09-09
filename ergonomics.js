@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const exerciseBtn = document.getElementById('getErgonomicTip');
     const exerciseTips = document.getElementById('ergonomicTips');
 
-    // Define a list of ergonomic tips
     const ergonomicTips = [
         'Maintain a neutral wrist position when typing.',
         'Adjust your chair height so your feet are flat on the floor.',
