@@ -1,3 +1,4 @@
+//Water
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.type === 'checkResetWater') {
         resetWaterIfNewDay();
@@ -5,7 +6,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 chrome.alarms.create('waterReminder', { delayInMinutes: 1, periodInMinutes: 1 });
-console.log('Alarm created');
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
     if (alarm.name === 'waterReminder') {
