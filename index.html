@@ -3,67 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <title>Healthy Dev Habits</title>
-    <style>
-        body {
-            width: 400px;
-        }
-    </style>
 </head>
 <body>
     <div id="content">
-        <h1>Healthy Dev Habits</h1>
-        <a href="settings.html">Settings</a>
-        <a href="resources.html">Resources</a>
-
-        <div class="break-reminder">
-            <h2>Break Reminder</h2>
-            <p id="breakStatus">Break Interval: 60 minutes</p>
-            <button id="setBreakReminder">Set Break Reminder</button>
-        </div>
-
-        <button id="logSleep">Log Sleep</button>
-        <button id="logWater">Log Water Intake</button>
-        <p id="waterStatus">Water Consumed: 0/8 cups</p>
-        <div id="waterProgress" style="width: 0%; height: 20px; background-color: blue;"></div>
-
-    
-        <p id="sleepStatus">Sleep Logged: 0</p>
-        <div class="progress-bar">
-            <div class="progress" id="sleepProgress"></div>
-        </div>
-        <p id="sleepTip">Start logging your sleep to get helpful tips!</p>  <!-- Tip placeholder -->
-
-        
-        <div class="mindfulness-stress-reduction">
-            <h2>Mindfulness & Stress Reduction</h2>
-            <div class="meditation-settings">
-                <h3>Daily Meditation Reminder</h3>
-                <p id="meditationInterval">Meditation interval: 60 minutes</p>
-            </div>
-
-            <div class="breathing-settings">
-                <h3>Deep-Breathing Exercise Reminder</h3>
-                <p id="breathingInterval">Breathing exercise interval: 60 minutes</p>
+        <div class="nav-bar">
+            <h1>Healthy Dev Habits</h1>
+            <div>
+               <a href="settings.html">
+                    <span class="material-symbols-outlined" style="color: #282828; margin: 0 5px;">
+                    settings
+                    </span>
+                </a>
+                <a href="resources.html">
+                    <span class="material-symbols-outlined" style="color: #282828; margin: 0 5px;">
+                    description
+                    </span>
+                </a> 
             </div>
         </div>
+        <div style="padding: 5px 15px;">
 
-        
-        <div class="work-life-section">
-            <h2>Work-Life Balance</h2>
-            <p>Set your daily work limit (hours):</p>
-            <input type="number" id="workLimitInput" min="1" value="8">
-            <button id="setWorkLimit">Set Work Limit</button>
-            <p id="workStatus">Work Limit: 8 hours</p>
+            <div class="water-tracking section">
+                <h2 class="water-colors">Water Tracker</h2>
+                <p id="waterStatus">Water Consumed: 0/8 cups</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div id="waterProgress" style="width: 0%; max-width: 95%; height: 42px; background-color: #034AA6; border-top-left-radius: 25px;
+                    border-bottom-left-radius: 25px;"></div>
+                    <button id="logWater" class="log-button" style="background-color: #034AA6; color: #74ADF6; position: absolute; right: 23px;">
+                        <span class="material-symbols-outlined">
+                            water_drop
+                        </span>
+                    </button>
+                </div>    
+            </div>
+            
+            <div class="sleep-tracking section">
+                <h2 class="sleep-colors">Sleep Tracker</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p id="sleepStatus">Sleep Logged: 0</p>
+                    <button id="logSleep" class="log-button" style="background-color: #5E33C1; color: #B697FF;">
+                        <span class="material-symbols-outlined">bedtime</span>
+                    </button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="sleepProgress"></div>
+                </div>
+                <p id="sleepTip">Start logging your sleep to get helpful tips!</p>
+            </div>
+
+            <div class="break-reminder section">
+                <h2 class="break-colors">Break Reminder</h2>
+                <p id="breakStatus">Break Interval: 60 minutes</p>
+            </div>
+
+            <div class="work-life-section section">
+                <h2 class="work-colors">Work-Life Balance</h2>
+                <p id="workStatus">Work Limit: 8 hours</p>
+            </div>
+
+            <div class="mindfulness-stress-reduction section">
+                <h2 class="mindfulness-colors">Mindfulness & Stress Reduction</h2>
+                <div class="meditation-settings">
+                    <h3>Daily Meditation Reminder</h3>
+                    <p id="meditationInterval">Meditation interval: 60 minutes</p>
+                </div>
+
+                <div class="breathing-settings">
+                    <h3>Deep-Breathing Exercise Reminder</h3>
+                    <p id="breathingInterval">Breathing exercise interval: 60 minutes</p>
+                </div>
+            </div>
         </div>
-
     </div>
     <script src="background.js"></script>
     <script src="watertracker.js"></script>
     <script src="sleeptracker.js"></script>
     <script src="mindfulness.js"></script> 
     <script src="breakreminder.js"></script>
-    
     <script src="worklife.js"></script>
 </body>
 </html>

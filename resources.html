@@ -4,60 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Dev Habits</title>
-    <style>
-        body {
-            width: 400px; /* Adjust this value as needed */
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
     <div id="content">
-        <h1>Resources</h1>
-        <a href="index.html">Go back</a>
-        <div>
-            <h2>Exercises</h2>
-            <button id="getExerciseTips">Get Exercise Tips</button>
-            <ul id="exerciseTips"></ul>
-        </div>
-        
-        <div class="ergonomic-tips">
-            <h2>Ergonomic Tips</h2>
-            <button id="getErgonomicTip">Get Ergonomic Tip</button>
-            <div id="ergonomicTips">
+        <div class="nav-bar">
+            <h1>Resources</h1>
+            <div>
+                <a href="index.html">
+                    <span class="material-symbols-outlined" style="color: #282828; margin: 0 5px; text-decoration: none;">
+                    home
+                    </span>
+                </a>
+               <a href="settings.html">
+                    <span class="material-symbols-outlined" style="color: #282828; margin: 0 5px;">
+                    settings
+                    </span>
+                </a>
             </div>
         </div>
-        <div class="mindfulness-stress-reduction">
-            <h2>Mindfulness & Stress Reduction</h2>
-            <button id="getMindfulnessTip">Get Mindfulness Tip</button>
-            <div id="mindfulnessTips">
-                <!-- Mindfulness and stress reduction tips will be displayed here -->
+        <div style="padding: 5px 15px;">
+        
+            <div class="exercise section">
+                <h2>Exercises</h2>
+                <button id="getExerciseTips" class="button" style="background-color: #088D11; margin-top: 10px;">Get Exercise Tips</button>
+                <ul id="exerciseTips"></ul>
+            </div>
+            
+            <div class="ergonomic-tips ergonomic section">
+                <h2>Ergonomic Tips</h2>
+                <button id="getErgonomicTip" class="button" style="background-color: #78B400; margin-top: 10px;">Get Ergonomic Tip</button>
+                <div id="ergonomicTips">
+                </div>
+            </div>
+            
+            <div class="mindfulness-stress-reduction section">
+                <h2>Mindfulness & Stress Reduction</h2>
+                <button id="getMindfulnessTip" class="button" style="background-color: #0398A6; margin-top: 10px;">Get Mindfulness Tip</button>
+                <div id="mindfulnessTips">
+                    
+                </div>
+            </div>
+
+            <div class="healthy-food section">
+                <h2>Healthy Food</h2>
+                <button id="getFoodSuggestions" class="button" style="background-color: #C90A3A; margin-top: 10px;">Get Healthy Food Suggestions</button>
+                <div id="foodSuggestions"></div>
+            </div>
+            
+            <div class="learning-section section">
+                <h2>Learning and Growth</h2>
+                <p>Enter Your Interests (e.g., Programming, Design, Data):</p>
+                <div class="input-button-section">
+                    <input type="text" id="interestsInput" placeholder="e.g., programming, design">
+                    <button id="suggestResources" class="button" style="background-color: #A60365; padding: 10px 17px;">Get Resources</button>  
+                </div>
+                <div id="resourcesList"></div>
             </div>
         </div>
-        <div>
-            <h2>Healthy Food</h2>
-            <button id="getFoodSuggestions">Get Healthy Food Suggestions</button>
-            <ul id="foodSuggestions"></ul>
-        </div>
-        
-        <div class="learning-section"></div>
-            <h2>Learning and Growth</h2>
-            <p>Enter your interests (e.g., programming, design, data):</p>
-            <input type="text" id="interestsInput" placeholder="e.g., programming, design">
-            <button id="suggestResources">Get Learning Resources</button>
-            <ul id="resourcesList"></ul>
-        </div>
-
-        <!-- <h1>Networking Opportunities</h1>
-        <button id="getEventInfo">Get Networking Events</button>
-        <ul id="eventList"></ul> -->
-
     </div>
     <script src="background.js"></script>
     <script src="exercise.js"></script>
     <script src="ergonomics.js"></script>
     <script src="mindfulnessTips.js"></script>
     <script src="healthyfood.js"></script>
-    <script src="networking.js"></script>
     <script src="learning.js"></script>
 </body>
 </html>

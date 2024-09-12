@@ -12,7 +12,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         chrome.notifications.create('', {
             title: 'Hydration Reminder',
             message: 'Time to drink some water!',
-            iconUrl: 'water.jpg',
+            iconUrl: 'water.png',
             type: 'basic'
         });
     }
@@ -47,7 +47,7 @@ function sendBreakNotification() {
         type: 'basic',
         title: 'Break Reminder',
         message: randomSuggestion,
-        iconUrl: 'crazy-labs-logo.png'
+        iconUrl: 'alarm.png'
     }, function(notificationId) {
         if (chrome.runtime.lastError) {
             console.error('Notification error:', chrome.runtime.lastError.message);
@@ -86,7 +86,7 @@ function sendBreakNotification() {
             type: 'basic',
             title: title,
             message: message,
-            iconUrl: 'water.jpg' 
+            iconUrl: 'water.png' 
         });
     }
 }

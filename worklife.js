@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'basic',
             title: 'Work-Life Balance Reminder',
             message: 'Time to log off and enjoy your personal time!',
-            iconUrl: 'crazy-labs-logo.png'
+            iconUrl: 'work.png'
         }, function(notificationId) {
             if (chrome.runtime.lastError) {
                 console.error('Notification error:', chrome.runtime.lastError.message);

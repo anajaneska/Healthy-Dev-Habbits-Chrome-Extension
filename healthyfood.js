@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Retrieve the API key from Chrome storage (ensure it's stored correctly)
             const apiKey = "dee6d055071d4548a55a59689cf3a551"
-            const url = `https://api.spoonacular.com/recipes/complexSearch?query=healthy&apiKey=${apiKey}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?query=healthy&addRecipeInformation=true&apiKey=${apiKey}`;
             
             const response = await fetch(url);
             if (!response.ok) {
@@ -21,20 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Select a random recipe from the results
                 const randomIndex = Math.floor(Math.random() * result.results.length);
                 const recipe = result.results[randomIndex];
-                
                 // Display the selected recipe
                 foodSuggestions.innerHTML = `
-                    <li>
-                        <strong>${recipe.title}</strong>: 
+                    <div>
+                        <a href="${recipe.sourceUrl}" target="_blank" style="text-decoration: 1px underline #C90A3A; text-underline-offset: 2px;">
+                        <p style="font-size: 14px;"><strong>${recipe.title}</strong><p></a>
                         <img src="${recipe.image}" alt="${recipe.title}" style="max-width: 100%; height: auto;">
-                    </li>
+                        
+                    </div>
                 `;
             } else {
-                foodSuggestions.innerHTML = '<li>No recipes found. Please try again later.</li>';
+                foodSuggestions.innerHTML = '<p>No recipes found. Please try again later.</p>';
             }
         } catch (error) {
             console.error('Error fetching food suggestions:', error.message);
-            foodSuggestions.innerHTML = `<li>Error fetching data: ${error.message}. Please try again later.</li>`;
+            foodSuggestions.innerHTML = `<p>Error fetching data: ${error.message}. Please try again later.</p>`;
         }
     }
 });
