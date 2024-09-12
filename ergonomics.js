@@ -35,12 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         'Keep your computer monitor at a distance where you can see the screen clearly without leaning forward.'
     ];
 
-    // Add event listener for button click
     exerciseBtn.addEventListener('click', function() {
         displayRandomTip();
     });
 
-    // Function to display a random ergonomic tip
     function displayRandomTip() {
         const randomIndex = Math.floor(Math.random() * ergonomicTips.length);
         const randomTip = ergonomicTips[randomIndex];
@@ -49,6 +47,5 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
     }
 
-    // Optional: Display a tip on page load
     displayRandomTip();
 });

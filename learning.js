@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const suggestBtn = document.getElementById('suggestResources');
     const resourcesList = document.getElementById('resourcesList');
 
-    // Sample resources
     const resources = {
         'programming': [
             { title: 'Learn JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide' },

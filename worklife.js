@@ -3,11 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const setWorkLimitBtn = document.getElementById('setWorkLimit');
     const workStatus = document.getElementById('workStatus');
 
-    let workLimit = 8;  // Default work limit in hours
+    let workLimit = 8;
     let workStartTime;
     let workIntervalId;
 
-    // Load stored data
     chrome.storage.local.get(['workLimit', 'workStartTime'], function(result) {
         if (result.workLimit) {
             workLimit = result.workLimit;
@@ -18,14 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         updateUI();
     });
-
-    // Set or reset work limit
-    // setWorkLimitBtn.addEventListener('click', function() {
-    //     workLimit = parseInt(workLimitInput.value, 10);
-    //     chrome.storage.local.set({ 'workLimit': workLimit });
-    //     startWorkTimer();
-    //     updateUI();
-    // });
 
     function startWorkTimer() {
         if (workIntervalId) {
@@ -41,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 sendWorkReminder();
                 clearInterval(workIntervalId);
             }
-        }, 60000);  // Check every minute
+        }, 60000);
     }
 
     function sendWorkReminder() {
@@ -67,10 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateUI() {
         workStatus.textContent = `Work Limit: ${workLimit} hours`;
-        // workLimitInput.value = workLimit;
     }
 
-    // Start the timer if work start time is set
     if (workStartTime) {
         startWorkTimer();
     }

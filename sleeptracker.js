@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const sleepProgress = document.getElementById('sleepProgress');
     const sleepTip = document.getElementById('sleepTip');
 
-    const dailySleepGoal = 8;  // 8 hours of sleep per night
+    const dailySleepGoal = 8;
     let sleepLogged = 0;
 
-    // Load stored sleep data
     chrome.storage.local.get(['sleepLogged'], function(result) {
         if (result.sleepLogged) {
             sleepLogged = result.sleepLogged;
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Log sleep when button is clicked
     logSleepBtn.addEventListener('click', function() {
         let hours = prompt("Enter the number of hours you slept:");
         hours = parseFloat(hours);
@@ -29,11 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateSleepUI() {
-        // Update the text and progress bar
         sleepStatus.textContent = `Sleep Logged: ${sleepLogged} hours / ${dailySleepGoal} hours`;
         sleepProgress.style.width = `${(sleepLogged / dailySleepGoal) * 100}%`;
-
-        // Show a helpful tip based on the sleep logged
         sleepTip.innerHTML = getSleepTip(sleepLogged);
     }
 

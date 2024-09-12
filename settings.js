@@ -16,20 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let workLimit = 8;
 
-    // Helper function to show alerts for successful saves
     function showAlert(message) {
         alert(message);
     }
 
-
-    // Load the stored break interval
     chrome.storage.local.get(['breakInterval'], function(result) {
         if (result.breakInterval) {
             breakIntervalInput.value = result.breakInterval;
         }
     });
 
-    // Save the new break interval
     saveSettingsBtn.addEventListener('click', function() {
         const newBreakInterval = parseInt(breakIntervalInput.value, 10);
         if (isNaN(newBreakInterval) || newBreakInterval <= 0) {
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Load stored water settings
     chrome.storage.local.get(['dailyGoal', 'waterReminderInterval'], function(result) {
         if (result.dailyGoal) {
             dailyGoalInput.value = result.dailyGoal;
@@ -51,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Save the new settings
     saveWaterBtn.addEventListener('click', function() {
         const newDailyGoal = parseInt(dailyGoalInput.value, 10);
         const newWaterReminderInterval = parseInt(waterReminderIntervalInput.value, 10);
@@ -70,8 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-    // Load saved settings from chrome storage
     chrome.storage.local.get(['meditationInterval', 'breathingInterval'], function(result) {
         if (result.meditationInterval) {
             meditationIntervalInput.value = result.meditationInterval;
@@ -81,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Save meditation interval
     meditationBtn.addEventListener('click', function () {
         const interval = parseInt(meditationIntervalInput.value, 10);
 
@@ -94,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Save breathing interval
     breathingBtn.addEventListener('click', function () {
         const interval = parseInt(breathingIntervalInput.value, 10);
         
@@ -114,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Save the new work limit
     setWorkLimitBtn.addEventListener('click', function() {
         const newWorkLimit = parseInt(workLimitInput.value, 10);
         if (isNaN(newWorkLimit) || newWorkLimit <= 0) {

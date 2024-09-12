@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const result = await response.json();
-            // Shuffle the array and select 3 random exercises
             const randomExercises = getRandomExercises(result, 3);
             exerciseTips.innerHTML = randomExercises.map(exercise => `
-                <li>
+                <li><p>
                     <strong>${exercise.name}</strong>: ${exercise.target}
+                    </p>
                 </li>
             `).join('');
         } catch (error) {
@@ -35,9 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getRandomExercises(exercises, count) {
-        // Shuffle the exercises array
         const shuffled = exercises.sort(() => 0.5 - Math.random());
-        // Return the first 'count' exercises
         return shuffled.slice(0, count);
     }
 });

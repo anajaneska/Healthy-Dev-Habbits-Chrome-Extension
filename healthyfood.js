@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function fetchFoodSuggestions() {
         try {
-            // Retrieve the API key from Chrome storage (ensure it's stored correctly)
             const apiKey = "dee6d055071d4548a55a59689cf3a551"
             const url = `https://api.spoonacular.com/recipes/complexSearch?query=healthy&addRecipeInformation=true&apiKey=${apiKey}`;
             
@@ -18,10 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const result = await response.json();
             if (result.results.length > 0) {
-                // Select a random recipe from the results
                 const randomIndex = Math.floor(Math.random() * result.results.length);
                 const recipe = result.results[randomIndex];
-                // Display the selected recipe
                 foodSuggestions.innerHTML = `
                     <div>
                         <a href="${recipe.sourceUrl}" target="_blank" style="text-decoration: 1px underline #C90A3A; text-underline-offset: 2px;">
