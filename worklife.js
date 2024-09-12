@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Set or reset work limit
-    setWorkLimitBtn.addEventListener('click', function() {
-        workLimit = parseInt(workLimitInput.value, 10);
-        chrome.storage.local.set({ 'workLimit': workLimit });
-        startWorkTimer();
-        updateUI();
-    });
+    // setWorkLimitBtn.addEventListener('click', function() {
+    //     workLimit = parseInt(workLimitInput.value, 10);
+    //     chrome.storage.local.set({ 'workLimit': workLimit });
+    //     startWorkTimer();
+    //     updateUI();
+    // });
 
     function startWorkTimer() {
         if (workIntervalId) {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateUI() {
         workStatus.textContent = `Work Limit: ${workLimit} hours`;
-        workLimitInput.value = workLimit;
+        // workLimitInput.value = workLimit;
     }
 
     // Start the timer if work start time is set

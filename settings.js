@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const meditationBtn = document.getElementById('setMeditationReminder');
     const breathingBtn = document.getElementById('setBreathingReminder');
 
+    const workLimitInput = document.getElementById('workLimitInput');
+    const setWorkLimitBtn = document.getElementById('setWorkLimit');
+
+    let workLimit = 8;
 
     // Helper function to show alerts for successful saves
     function showAlert(message) {
@@ -99,6 +103,25 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             chrome.storage.local.set({ 'breathingInterval': interval }, function() {
                 showAlert(`Breathing interval saved: ${interval} minutes`);
+            });
+        }
+    });
+
+    chrome.storage.local.get(['workLimit'], function(result) {
+        if (result.workLimit) {
+            workLimit = result.workLimit;
+            workLimitInput.value = workLimit;
+        }
+    });
+
+    // Save the new work limit
+    setWorkLimitBtn.addEventListener('click', function() {
+        const newWorkLimit = parseInt(workLimitInput.value, 10);
+        if (isNaN(newWorkLimit) || newWorkLimit <= 0) {
+            showAlert('Please enter a valid work limit.');
+        } else {
+            chrome.storage.local.set({ 'workLimit': newWorkLimit }, function() {
+                showAlert('Work limit saved!');
             });
         }
     });

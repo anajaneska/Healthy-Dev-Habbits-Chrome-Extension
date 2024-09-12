@@ -19,5 +19,17 @@
       "background": {
         "service_worker": "background.js"
       },
-      "options_page": "settings.html"
+      "options_page": "settings.html",
+    "web_accessible_resources": [
+    {
+      "resources": [
+        "water.png",
+        "alarm.png",
+        "work.png",
+        "meditation.png",
+        "breathing.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

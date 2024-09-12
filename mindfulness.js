@@ -22,27 +22,29 @@ document.addEventListener('DOMContentLoaded', function () {
             breathingInterval = result.breathingInterval;
         }
         updateUI(); // Update the UI with both intervals
+        setMeditationReminder(); // Set initial reminders
+        setBreathingReminder();
     });
 
-    // Set meditation reminder when the button is clicked
-    meditationBtn.addEventListener('click', function() {
-        const interval = parseInt(meditationIntervalInput.value, 10);
-        if (interval > 0) {
-            meditationInterval = interval;
-            setMeditationReminder();
-            updateUI();
-        }
-    });
+    // // Set meditation reminder when the button is clicked
+    // meditationBtn.addEventListener('click', function() {
+    //     const interval = parseInt(meditationIntervalInput.value, 10);
+    //     if (interval > 0) {
+    //         meditationInterval = interval;
+    //         setMeditationReminder();
+    //         updateUI();
+    //     }
+    // });
 
-    // Set breathing reminder when the button is clicked
-    breathingBtn.addEventListener('click', function() {
-        const interval = parseInt(breathingIntervalInput.value, 10);
-        if (interval > 0) {
-            breathingInterval = interval;
-            setBreathingReminder();
-            updateUI();
-        }
-    });
+    // // Set breathing reminder when the button is clicked
+    // breathingBtn.addEventListener('click', function() {
+    //     const interval = parseInt(breathingIntervalInput.value, 10);
+    //     if (interval > 0) {
+    //         breathingInterval = interval;
+    //         setBreathingReminder();
+    //         updateUI();
+    //     }
+    // });
 
     // Update reminders if the intervals are changed elsewhere
     chrome.storage.onChanged.addListener(function(changes, namespace) {
@@ -60,20 +62,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to set or reset the meditation reminder
     function setMeditationReminder() {
-        chrome.alarms.clear('meditationReminder'); // Clear the old alarm
+        chrome.alarms.clear('meditationReminder'); // Clear any existing alarm
         chrome.alarms.create('meditationReminder', { periodInMinutes: meditationInterval }); // Create new alarm
-        chrome.storage.local.set({ 'meditationInterval': meditationInterval }, function() {
-            console.log(`Meditation reminder set for every ${meditationInterval} minutes`);
-        });
+        chrome.storage.local.set({ 'meditationInterval': meditationInterval }); // Update the interval in storage
     }
 
-    // Function to set or reset the deep-breathing reminder
+    // Function to set or reset the breathing reminder
     function setBreathingReminder() {
-        chrome.alarms.clear('breathingReminder'); // Clear the old alarm
+        chrome.alarms.clear('breathingReminder'); // Clear any existing alarm
         chrome.alarms.create('breathingReminder', { periodInMinutes: breathingInterval }); // Create new alarm
-        chrome.storage.local.set({ 'breathingInterval': breathingInterval }, function() {
-            console.log(`Deep-breathing reminder set for every ${breathingInterval} minutes`);
-        });
+        chrome.storage.local.set({ 'breathingInterval': breathingInterval }); // Update the interval in storage
     }
 
     // Function to update the UI with the latest intervals
